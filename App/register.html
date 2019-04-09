@@ -31,23 +31,18 @@
 
         <form class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-            <label for="inputEmail" class="sr-only">First Name</label>
-            <input type="firstname" id="inputFname" class="form-control" placeholder="First name" required autofocus>
-            <label for="inputEmail" class="sr-only">Last Name</label>
-            <input type="lastname" id="inputLname" class="form-control" placeholder="Last name" required autofocus>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="tel" id="inputPhoneNumber" class="form-control" placeholder="Phone number" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input id="fname" class="form-control" placeholder="First name" required autofocus>
+            <input id="lname" class="form-control" placeholder="Last name" required autofocus>
+            <input id="email" class="form-control" placeholder="Email address" type="email" required autofocus>
+            <input id="phone" class="form-control" placeholder="Phone number" type="tel" required autofocus>
+            <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
             <div class="radio mb-3">
                 <label>
-                    <input type="radio" name="accountType" value="patient"> I am a Doctor<br>
+                    <input id="doc" type="radio" name="accountType" value="patient"> I am a Doctor<br>
                     <input type="radio" name="accountType" value="doctor"> I am a Patient
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Create account</button>
+            <button id="submit" class="btn btn-lg btn-primary btn-block" type="button">Create account</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
         </form>
 
@@ -59,7 +54,7 @@
     </div>
 
     <!-- Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/register.js"></script>
