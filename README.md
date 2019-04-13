@@ -22,6 +22,7 @@ Run the following SQL statements before using the application.
 
 ```sql
 CREATE TABLE Users (email varchar(40) NOT NULL, password varchar(60), firstName varchar(20), lastName varchar(20), phone int(15), isDoc bool, PRIMARY KEY(email));
+CREATE TABLE Calendar (id varchar(36) NOT NULL, email varchar(40), start int(15), duration int(2), title varchar(40), content varchar(40), category varchar(20), PRIMARY KEY(id), FOREIGN KEY(email) REFERENCES Users(email));
 ```
 
 ## Authors
@@ -32,3 +33,11 @@ CREATE TABLE Users (email varchar(40) NOT NULL, password varchar(60), firstName 
 - **Jordan Morant** - _Front End_ - [jmorant2016](https://github.com/jmorant2016)
 - **Kelsey Joseph** - _Front End_ - [KelJ27](https://github.com/KelJ27)
 - **Natacha Barcala** - _Front End_ - [nabarcala](https://github.com/nabarcala)
+
+## Special Thanks
+
+Special thanks to [ArrobeFr](https://github.com/ArrobeFr) for providing the source code for the calendar.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/ChrisLubin/Medication-Tracker-Web-App/blob/master/LICENSE) file for details.

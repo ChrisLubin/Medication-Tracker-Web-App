@@ -1,5 +1,16 @@
 $(document).ready(() => {
   $('#submit').click(() => {
+    login();
+  });
+
+  $(document).on('keypress',function(e) {
+    // Login when enter is pressed
+    if(e.which == 13) {
+      login();
+    }
+  });
+
+  function login() {
     // Validation checks should go here
 
     const email = $('#email').val();
@@ -15,6 +26,7 @@ $(document).ready(() => {
       success: () => {
         // Will automatically redirect to logged in page once it is created (Not yet implemeneted)
         console.log('Logged in');
+        window.location = 'index.php';
       },
       statusCode: {
         // Wrong email or password
@@ -26,5 +38,5 @@ $(document).ready(() => {
         }
       }
     });
-  });
+  }
 });

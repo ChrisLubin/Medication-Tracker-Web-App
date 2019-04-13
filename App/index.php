@@ -17,12 +17,20 @@
                 <!-- Add logo here -->
                 <h3 class="masthead-brand">Team Overload</h3>
                 <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link active" href="index.html">Home</a>
-                    <a class="nav-link" href="#">Calendar</a>
+                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link" href="calendar.php">Calendar</a>
                     <a class="nav-link" href="#">Prescriptions</a>
                     <a class="nav-link" href="#">Appointments</a>
-                    <a class="nav-link" href="login.html">Login</a>
-                    <a class="nav-link" href="register.html">Register</a>
+                    <?php
+                        session_start();
+
+                        if(!isset($_SESSION['email'])) {
+                          echo "<a class='nav-link' href='login.html'>Login</a>
+                          <a class='nav-link' href='register.html'>Register</a>";
+                        } else {
+                            echo "<a id='logout' class='nav-link' href='#'>Logout</a>";
+                        }
+                    ?>
                 </nav>
             </div>
         </header>
@@ -47,6 +55,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
