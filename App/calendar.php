@@ -44,7 +44,7 @@
           <li><a class="nav-link" href="#">
               <h4>Prescriptions</h4>
             </a></li>
-          <li><a class="nav-link" href="#">
+          <li><a class="nav-link" href="appointments.php">
               <h4>Appointments</h4>
             </a></li>
           <li><a id="logout" class="nav-link" href="login.html">

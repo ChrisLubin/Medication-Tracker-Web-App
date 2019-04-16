@@ -20,7 +20,7 @@
                     <a class="nav-link active" href="#">Home</a>
                     <a class="nav-link" href="calendar.php">Calendar</a>
                     <a class="nav-link" href="#">Prescriptions</a>
-                    <a class="nav-link" href="#">Appointments</a>
+                    <a class="nav-link" href="appointments.php">Appointments</a>
                     <?php
                         session_start();
 
