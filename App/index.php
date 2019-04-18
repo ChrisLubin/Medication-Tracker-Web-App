@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>Medication Tracker App</title>
@@ -19,16 +18,21 @@
                 <nav class="nav nav-masthead justify-content-center">
                     <a class="nav-link active" href="#">Home</a>
                     <a class="nav-link" href="calendar.php">Calendar</a>
-                    <a class="nav-link" href="#">Prescriptions</a>
-                    <a class="nav-link" href="appointments.php">Appointments</a>
+                    <a class='nav-link' href='#'>Prescriptions</a>
                     <?php
-                        session_start();
+                        if (!isset($_SESSION)) {session_start();}
 
-                        if(!isset($_SESSION['email'])) {
-                          echo "<a class='nav-link' href='login.html'>Login</a>
-                          <a class='nav-link' href='register.html'>Register</a>";
+                        if (!isset($_SESSION['email'])) {
+                            echo "<a class='nav-link' href='appointments.php'>Appointments</a>
+                            <a class='nav-link' href='login.html'>Login</a>
+                            <a class='nav-link' href='register.html'>Register</a>";
                         } else {
-                            echo "<a id='logout' class='nav-link' href='#'>Logout</a>";
+                            if ($_SESSION['isDoc']) {
+                                echo "<a id='logout' class='nav-link' href='#'>Logout</a>";
+                            } else {
+                                echo "<a class='nav-link' href='appointments.php'>Appointments</a>
+                                <a id='logout' class='nav-link' href='#'>Logout</a>";
+                            }
                         }
                     ?>
                 </nav>

@@ -1,6 +1,6 @@
 <?php
   include("config.php");
-  session_start();
+  if (!isset($_SESSION)) {session_start();}
 
   // All parameters were not set
   if(!(isset($_POST['id']) && isset($_POST['start']) && isset($_POST['duration']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['category']))) {

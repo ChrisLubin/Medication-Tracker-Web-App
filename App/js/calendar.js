@@ -1,5 +1,4 @@
-$(document).ready(() => {
-  $(document).ready(function() {
+$(document).ready(function() {
     $('.dtp').datetimepicker();
 
     var Calendar = $('#calendar').Calendar();
@@ -230,4 +229,3 @@ $(document).ready(() => {
       }
     });
   });
-});

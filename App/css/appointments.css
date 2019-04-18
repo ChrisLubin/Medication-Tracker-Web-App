@@ -1,35 +1,27 @@
- /* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+.card, .card > * {
+  text-shadow: 0 !important;
+  font-weight: 0 !important;
+  color: black;
 }
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
+header {
+  margin: 1rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 1rem;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  margin-left: 1rem;
+  padding: 0.25rem 0;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: rgba(96, 101, 109);
+  background-color: transparent;
+  border-bottom: 0.25rem solid transparent;
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
+.masthead-brand {
+  margin-top: 0;
 }
 
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
+#view {
   display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-} 
+}

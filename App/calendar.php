@@ -1,9 +1,9 @@
 <?php
-  session_start();
+  if (!isset($_SESSION)) {session_start();}
 
   if(!isset($_SESSION['email'])) {
-    header('Location: login.html');
-    exit();
+      header('Location: login.html');
+      exit();
   }
 ?>
 <!DOCTYPE html>
@@ -44,9 +44,13 @@
           <li><a class="nav-link" href="#">
               <h4>Prescriptions</h4>
             </a></li>
-          <li><a class="nav-link" href="appointments.php">
-              <h4>Appointments</h4>
-            </a></li>
+            <?php
+              if (!$_SESSION['isDoc']) {
+                echo "<li><a class='nav-link' href='appointments.php'>
+                <h4>Appointments</h4>
+                </a></li>";
+              }
+            ?>
           <li><a id="logout" class="nav-link" href="login.html">
               <h4>Logout</h4>
             </a></li>

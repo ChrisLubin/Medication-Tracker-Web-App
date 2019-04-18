@@ -1,10 +1,10 @@
 <?php
   include("config.php");
   if (!isset($_SESSION)) {session_start();}
-  
+
   $email = $_SESSION['email'];
 
-  $sql = "SELECT id, start, duration, title, content, category FROM Calendar WHERE email = '$email'";
+  $sql = "SELECT start, duration, title, content, category FROM Calendar WHERE email = '$email' AND category LIKE 'Appointment%' ORDER BY start DESC";
   $result = mysqli_query($db, $sql);
   $rows = array();
 

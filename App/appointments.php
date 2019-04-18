@@ -1,11 +1,11 @@
 <?php
-session_start();
-include("php/config.php");
+    include("php/config.php");
+    if (!isset($_SESSION)) {session_start();}
 
-if(!isset($_SESSION['email'])) {
-    header('Location: login.html');
-    exit();
-}
+    if (!isset($_SESSION['email'])) {
+        header('Location: login.html');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +15,7 @@ if(!isset($_SESSION['email'])) {
         <title>Medication Tracker App</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Custom styles for this template -->
         <link href="css/cover.css" rel="stylesheet">
         <link href="css/appointments.css" rel="stylesheet">
@@ -22,7 +23,7 @@ if(!isset($_SESSION['email'])) {
 
     <body class="text-center" style="background-image: url(images/doctor1.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-            <header class="masthead mb-auto">
+            <header class="masthead mb-5">
                 <div class="inner">
                     <!-- Add logo here -->
                     <h3 class="masthead-brand">Team Overload</h3>
@@ -31,88 +32,67 @@ if(!isset($_SESSION['email'])) {
                         <a class="nav-link" href="calendar.php">Calendar</a>
                         <a class="nav-link" href="#">Prescriptions</a>
                         <a class="nav-link active" href="#">Appointments</a>
-                        <?php
-                        if(!isset($_SESSION['email'])) {
-                            echo "<a class='nav-link' href='login.html'>Login</a>
-                          <a class='nav-link' href='register.html'>Register</a>";
-                        } else {
-                            echo "<a id='logout' class='nav-link' href='#'>Logout</a>";
-                        }
-                        ?>
+                        <a class='nav-link' id='logout' href='#'>Logout</a>
                     </nav>
                 </div>
             </header>
 
-            <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> -->
-            <div class="tab">
-                <button class="tablinks" onclick="appt(event, 'createAppt')" id="defaultOpen">Create Appointment</button>
-                <button class="tablinks" onclick="appt(event, 'viewAppt')">View Appointments</button>
-
-            </div>
-            <div id="createAppt" class="tabcontent">
-                <h3>Please fill out form below.</h3>
-                <div id="modal-create" role="dialog">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <!-- Create form -->
-                                <form id="form-create" class="form">
-                                    <input type="text" placeholder="From" class="start form-control dtp">
-                                    <input type="text" placeholder="Duration (In Hours)" class="duration form-control">
-                                    <input type="text" placeholder="Title" class="title form-control">
-                                    <textarea placeholder="Content" class="content form-control"></textarea>
-                                    <input type="text" placeholder="Appointment" value="Appointment" class="category form-control">
-                                    <!-- Temporary -->
-                                    <label>Select Doctor</label>
-                                    <?php
-                                    $sql = mysqli_query($db, "SELECT lastName FROM Users WHERE isDoc = 1")or die(mysql_error());
-                                    echo '<select name="Doctor" class="category form-control">';
-                                    while($results = mysqli_fetch_object($sql))
-                                    {
+            <div class="card text-center text-primary mt-5">
+                <div class="card-header">
+                  <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="createAppointment" href="#">Create Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link inactive" id="viewAppointments" href="#">View Appointments</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                    <div id="create">
+                        <div class="form-group">
+                            <input type="email" class="start form-control dtp" id="from" aria-describedby="emailHelp" placeholder="From">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="duration" placeholder="Duration (In Hours)">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="title" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="content" placeholder="Content"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="doctor" placeholder="Content">
+                                <option selected value disabled>Please select your doctor</option>
+                                <?php
+                                    $sql = mysqli_query($db, "SELECT lastName FROM Users WHERE isDoc = 1");
+                                    while($results = mysqli_fetch_object($sql)) {
                                         $doctor=$results->lastName;
-                                        echo '<option value="'.$doctor.'">'.$doctor.'</option>';
-                                        
+                                        echo "<option>Dr. $doctor</option>";
                                     }
-                                    echo '</select>';
-                                    //don't close db here
-                                    ?>
-
-                                    <!-- Create button -->
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="glyphicon glyphicon-plus"></i> Create
-                                    </button>
-                                </form>
-                            </div>
+                                    // Don't close db here
+                                ?>
+                        </div>
+                        <div class="form-group">
+                            <input id="createBtn" type="submit" class="btn btn-primary mt-4" value="Create">
                         </div>
                     </div>
-                </div>
+                    <div id="view" class="mt-4">
+                        <div class="row">
+                                <div class="col-4">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="tab-content" id="nav-tabContent">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+              </div>
             </div>
 
-            <div id="viewAppt" class="tabcontent">
-                <h3>Appointments</h3>
-                <?php
-                
-                $email = $_SESSION['email'];
-                $sql = mysqli_query($db, "SELECT start, title, content FROM Calendar WHERE email = '$email' AND category = 'Appointment'")or die(mysql_error());
-                echo  '<table id="Appointments" border="">';
-                while($results = mysqli_fetch_object($sql))
-                {
-                    //start date needs converted to real date
-                    $start=$results->start;
-                    $title=$results->title;
-                    $content=$results->content;
-
-                    echo '<tr>
-                    <td>'.$start.'</td>
-                    <td>'.$title.'</td>
-                    <td>'.$content.'</td>
-                    </tr>';
-
-                }
-                echo ' </table>  ';
-                $db->close();
-                ?>
-            </div>
             <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 
             <footer class="mastfoot mt-auto">
@@ -125,10 +105,10 @@ if(!isset($_SESSION['email'])) {
 
         <!-- Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
         <script src="js/calendarSrc.js"></script>
-        <script src="js/calendar.js"></script>
         <script src="js/appointments.js"></script>
     </body>
 

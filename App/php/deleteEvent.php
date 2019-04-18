@@ -1,9 +1,8 @@
 <?php
   include("config.php");
-  session_start();
 
   // All parameters were not set
-  if(!isset($_POST['id'])) {
+  if (!isset($_POST['id'])) {
     http_response_code(400); // Bad request http status
     $db->close();
     exit();
