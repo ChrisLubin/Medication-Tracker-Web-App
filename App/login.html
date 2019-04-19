@@ -30,16 +30,27 @@
         </header>
 
         <form class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
-            <input type="password" id="password" class="form-control" placeholder="Password" required>
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
+            <div class="card text-center text-dark text-primary w-responsive">
+                <div class="card-header">
+                    <h1 class="h3 font-weight-normal">Please sign in</h1>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-control rounded" placeholder="Email address" required autofocus>
+                        <input type="password" id="password" class="form-control rounded" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button id="submit" class="btn btn-lg btn-primary" type="button">Sign in</button>
+                    </div>
+                </div>
             </div>
-            <button id="submit" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
         </form>
 
         <footer class="mastfoot mt-auto">

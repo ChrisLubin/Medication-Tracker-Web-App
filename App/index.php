@@ -31,6 +31,7 @@
                                 echo "<a id='logout' class='nav-link' href='#'>Logout</a>";
                             } else {
                                 echo "<a class='nav-link' href='appointments.php'>Appointments</a>
+                                <a class='nav-link' href='patient.php'>Profile</a>
                                 <a id='logout' class='nav-link' href='#'>Logout</a>";
                             }
                         }

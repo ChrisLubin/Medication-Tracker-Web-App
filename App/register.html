@@ -12,7 +12,6 @@
 </head>
 
 <body class="text-center" style="background-image: url(images/doctor1.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
@@ -29,21 +28,33 @@
             </div>
         </header>
 
-        <form class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-            <input id="fname" class="form-control" placeholder="First name" required autofocus>
-            <input id="lname" class="form-control" placeholder="Last name" required autofocus>
-            <input id="email" class="form-control" placeholder="Email address" type="email" required autofocus>
-            <input id="phone" class="form-control" placeholder="Phone number" type="tel" required autofocus>
-            <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
-            <div class="radio mb-3">
-                <label>
-                    <input id="doc" type="radio" name="accountType" value="patient"> I am a Doctor<br>
-                    <input type="radio" name="accountType" value="doctor"> I am a Patient
-                </label>
+        <form class="form-signin" onsubmit="return checkPassword(this)">
+            <div class="card text-center text-dark text-primary w-responsive">
+                <div class="card-header">
+                    <h1 class="h3 font-weight-normal">Register</h1>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <input id="fname" class="form-control rounded" placeholder="First name" required autofocus>
+                        <input id="lname" class="form-control rounded" placeholder="Last name" required autofocus>
+                        <input id="email" class="form-control rounded" placeholder="Email address" type="email" required autofocus>
+                        <input id="phone" class="form-control rounded" placeholder="Phone number" type="tel" required autofocus>
+                        <input id="password" name="password" type="password" class="form-control rounded" placeholder="Password" required autofocus>
+<!--                        <input  id="confirmPassword" type="password" class="form-control rounded" name="confirmPassword" placeholder="Confirm Password" required autofocus>-->
+                    </div>
+                    <div class="form-group ">
+                        <div class="radio mb-3">
+                            <label>
+                                <input id="doc" type="radio" name="accountType" value="doctor"> I am a Doctor<br>
+                                <input type="radio" name="accountType" value="patient"> I am a Patient
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button id="submit" class="btn btn-lg btn-primary" type="button">Create account</button>
+                    </div>
+                </div>
             </div>
-            <button id="submit" class="btn btn-lg btn-primary btn-block" type="button">Create account</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
         </form>
 
         <footer class="mastfoot mt-auto">

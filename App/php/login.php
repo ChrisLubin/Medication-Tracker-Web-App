@@ -11,7 +11,7 @@
     $email = strtolower(mysqli_real_escape_string($db, $_POST['email']));
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    $sql = "SELECT isDoc, password FROM Users WHERE email = '$email'";
+    $sql = "SELECT firstName, lastName, isDoc, password FROM Users WHERE email = '$email'";
     $result = mysqli_query($db, $sql);
 
     // Wrong email
@@ -33,8 +33,12 @@
 
     session_start();
 
-    $_SESSION['email'] = $email;
+    $_SESSION['email'] = $email; 
     $_SESSION['isDoc'] = $results->isDoc;
+    $_SESSION['firstName'] = $results->firstName;
+    $_SESSION['lastName'] = $results->lastName;
+
+    $_SESSION['fullName'] = $_SESSION['firstName'] . ' ' . $_SESSION['lastName']; 
     
     $db->close();
 ?>

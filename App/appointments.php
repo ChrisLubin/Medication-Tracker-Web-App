@@ -32,6 +32,7 @@
                         <a class="nav-link" href="calendar.php">Calendar</a>
                         <a class="nav-link" href="#">Prescriptions</a>
                         <a class="nav-link active" href="#">Appointments</a>
+                        <a class='nav-link' href='patient.php'>Profile</a>
                         <a class='nav-link' id='logout' href='#'>Logout</a>
                     </nav>
                 </div>

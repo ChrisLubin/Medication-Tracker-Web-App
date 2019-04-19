@@ -48,6 +48,9 @@
               if (!$_SESSION['isDoc']) {
                 echo "<li><a class='nav-link' href='appointments.php'>
                 <h4>Appointments</h4>
+                </a></li>
+                <li><a class='nav-link' href='patient.php'>
+                <h4>Profile</h4>
                 </a></li>";
               }
             ?>
