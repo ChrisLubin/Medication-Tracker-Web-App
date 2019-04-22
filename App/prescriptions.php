@@ -1,3 +1,12 @@
+<?php
+    include("php/config.php");
+    if (!isset($_SESSION)) {session_start();}
+
+    if (!isset($_SESSION['email'])) {
+        header('Location: login.html');
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,144 +55,123 @@
           <a class="nav-link" href="index.php">Home</a>
           <a class="nav-link" href="calendar.php">Calendar</a>
           <a class="nav-link active" href="prescriptions.php">Prescriptions</a>
-          <a class="nav-link" href="appointments.php">Appointments</a>
-          <a class="nav-link" href="#">Logout</a>
+          <?php
+                        if (!isset($_SESSION)) {session_start();}
+
+                        if (!$_SESSION['isDoc']) {
+                            echo "<a class='nav-link' href='appointments.php'>Appointments</a>
+                            <a class='nav-link' href='patient.php'>Profile</a>";
+                        }
+                    ?>
+          <a class="nav-link" id="logout" href="#">Logout</a>
         </nav>
       </div>
     </header>
 
-    <!-- Table and Contents -->
-    <div>
-      <div>
-        <div class="d-flex flex-row justify-content-center mt-4">
-          <div class="wrap-table100">
-            <div class="form-group row ml-0">
-              <select name="patients" class="custom-select mr-sm-2 col-3">
-                <option value="blank">Chooose Patient</option>
-                <option value="patient1">patient1</option>
-                <option value="patient2">patient2</option>
-                <option value="patient3">patient3</option>
-              </select>
-            </div>
-            <div class="table100 ver1 m-b-110">
-              <div class="table100-head">
-                <table>
-                  <thead>
-                    <tr class="row100 head">
-                      <th class="cell100 column1">Prescriptions</th>
-                      <th class="cell100 column2">Instructions</th>
-                      <th class="cell100 column3">Dosage</th>
-                      <th class="cell100 column4">Doctor</th>
-                      <th class="cell100 column5">
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm"
-                          data-toggle="modal"
-                          data-target=".bd-example-modal-sm"
-                          id="add"
-                        >
-                          <i class="fa fa-plus"></i> Add New
-                        </button>
-                      </th>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
+    <?php
+      $email = $_SESSION['email'];
 
-              <div class="table100-body js-pscroll">
-                <table>
-                  <tbody>
-                    <tr class="row100 body">
-                      <td class="cell100 column1">Allegra</td>
-                      <td class="cell100 column2">
-                        Take 1 pill a day. Do not take more than 6 pills in one
-                        day.
-                      </td>
-                      <td class="cell100 column3">300mg</td>
-                      <td class="cell100 column4">10</td>
-                      <td class="cell100 column5">
-                        <button type="button">
-                          <i
-                            class="fa fa-wrench"
-                            style="color:black"
-                            data-toggle="modal"
-                            data-target=".bd-example-modal-sm"
-                            id="add"
-                          ></i>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <i
-                            class="fa fa-times"
-                            style="color: red"
-                            data-toggle="modal"
-                            data-target="#deleteModal"
-                          ></i>
-                        </button>
-                      </td>
-                    </tr>
+      if ($_SESSION['isDoc']) {
+        echo '    <!-- Table and Contents -->
+        <div>
+          <div>
+            <div class="d-flex flex-row justify-content-center mt-4">
+              <div class="wrap-table100">
+                <div class="form-group row ml-0">
+                  <select id="patients" class="custom-select mr-sm-2 col-3">
+                    <option value="blank">Chooose Patient</option> ';
+                    $sql = mysqli_query($db, "SELECT DISTINCT patientFname, patientLname, patient FROM Prescription WHERE doctor = '$email' ORDER BY patientFname DESC");
+                    while($results = mysqli_fetch_object($sql)) {
+                      $email = $results->patient;
+                      $fname = $results->patientFname;
+                      $lname = $results->patientLname;
+                      echo "<option id='$email'>$fname $lname</option>";
+                    }
+                    // Don't close db here
+                    echo "</select>";
 
-                    <tr class="row100 body">
-                      <td class="cell100 column1">Allegra</td>
-                      <td class="cell100 column2">
-                        Take 1 pill a day. Do not take more than 6 pills in one
-                        day.
-                      </td>
-                      <td class="cell100 column3">300mg</td>
-                      <td class="cell100 column4">10</td>
-                      <td class="cell100 column5">
-                        <button type="button">
-                          <i
-                            class="fa fa-wrench"
-                            style="color:black"
-                            data-toggle="modal"
-                            data-target=".bd-example-modal-sm"
-                            id="add"
-                          ></i>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <i
-                            class="fa fa-times"
-                            style="color: red"
-                            data-toggle="modal"
-                            data-target="#deleteModal"
-                          ></i>
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr class="row100 body">
-                      <td class="cell100 column1">Allegra</td>
-                      <td class="cell100 column2">
-                        Take 1 pill a day. Do not take more than 6 pills in one
-                        day.
-                      </td>
-                      <td class="cell100 column3">300mg</td>
-                      <td class="cell100 column4">10</td>
-                      <td class="cell100 column5">
-                        <button type="button">
-                          <i
-                            class="fa fa-wrench"
-                            style="color:black"
-                            data-toggle="modal"
-                            data-target=".bd-example-modal-sm"
-                            id="add"
-                          ></i>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <i
-                            class="fa fa-times"
-                            style="color: red"
-                            data-toggle="modal"
-                            data-target="#deleteModal"
-                          ></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+        echo '
+                  </select>
+                </div>
+                <div class="table100 ver1 m-b-110">
+                  <div class="table100-head">
+                    <table>
+                      <thead>
+                        <tr class="row100 head">
+                          <th class="cell100 column1">Prescriptions</th>
+                          <th class="cell100 column2">Instructions</th>
+                          <th class="cell100 column3">Dosage</th>
+                          <th class="cell100 column5">
+                            <button
+                              type="button"
+                              class="btn btn-success btn-sm"
+                              data-toggle="modal"
+                              data-target=".bd-example-modal-sm"
+                              id="add"
+                            >
+                              <i class="fa fa-plus"></i> Add New
+                            </button>
+                          </th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+    
+                  <div class="table100-body js-pscroll">
+                    <table id="rows">
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </div>';
+      } else {
+        echo '    <!-- Table and Contents -->
+        <div>
+          <div>
+            <div class="d-flex flex-row justify-content-center mt-4">
+              <div class="wrap-table100 mt-5">
+                <div class="table100 ver1 m-b-110">
+                  <div class="table100-head">
+                    <table>
+                      <thead>
+                        <tr class="row100 head">
+                          <th class="cell100 column1">Prescriptions</th>
+                          <th class="cell100 column2">Instructions</th>
+                          <th class="cell100 column3">Dosage</th>
+                          <th class="cell100 column4">Doctor</th>
+                          <th class="cell100 column5">
+                            <button
+                              type="button"
+                              class="btn btn-success btn-sm"
+                              data-toggle="modal"
+                              data-target=".bd-example-modal-sm"
+                              id="add"
+                            >
+                              <i class="fa fa-plus"></i> Add New
+                            </button>
+                          </th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+    
+                  <div class="table100-body js-pscroll">
+                    <table id="rows">
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>';
+      }
+    ?>
 
     <!-- Small modal for Add button -->
     <div
@@ -209,30 +197,121 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="recipient-name">Medication:</label>
-                <input type="text" class="form-control" id="newItem" />
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label"
-                  >Dosage:</label
-                >
-                <input type="text" class="form-control" id="newItem" />
-              </div>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label"
-                  >Doctor:</label
-                >
-                <input type="text" class="form-control" id="newItem" />
+                <label for="recipient-name">Prescriptions</label>
+                <input type="text" class="form-control" id="prescription" />
               </div>
               <div class="form-group">
                 <label for="message-text" class="col-form-label"
-                  >Instructions:</label
+                  >Instructions</label
                 >
                 <textarea
                   class="form-control"
                   row="5"
-                  id="message-text"
+                  id="instructions"
                 ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label"
+                  >Dosage</label
+                >
+                <input type="text" class="form-control" id="dosage" />
+              </div>
+                <?php
+                  $email = $_SESSION['email'];
+
+                  if ($_SESSION['isDoc']) {
+                    echo "<div class='form-group'>
+                    <label for='recipient-name' class='col-form-label'
+                      >Patient</label
+                    ></div>
+                    <select id='email' class='form-control'>
+                    <option selected value disabled>Please select your patient</option>";
+                    $sql = mysqli_query($db, "SELECT email, firstName, lastName FROM Users WHERE isDoc = 0");
+                    while($results = mysqli_fetch_object($sql)) {
+                      $email = $results->email;
+                      $fname = $results->firstName;
+                      $lname = $results->lastName;
+                      echo "<option id='$email'>$fname $lname</option>";
+                    }
+                    // Don't close db here
+                    echo "</select>";
+                  } else {
+                    echo "<div class='form-group'>
+                    <label for='recipient-name' class='col-form-label'
+                      >Doctor</label
+                    ></div>
+                    <select id='email' class='form-control'>
+                    <option selected value disabled>Please select your doctor</option>";
+                    $sql = mysqli_query($db, "SELECT email, lastName FROM Users WHERE isDoc = 1");
+                    while($results = mysqli_fetch_object($sql)) {
+                      $email = $results->email;
+                      $lname = $results->lastName;
+                      echo "<option id='$email'>Dr. $lname</option>";
+                    }
+                    // Don't close db here
+                    echo "</select>";
+                  }
+                ?>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button id="addPrescription" type="button" class="btn btn-primary" data-dismiss="modal">
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Small modal for Edit button -->
+        <div
+      class="modal fade bd-example-modal-smm"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="mySmallModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Prescription</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name">Prescriptions</label>
+                <input type="text" class="form-control" id="editPrescription" />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label"
+                  >Instructions</label
+                >
+                <textarea
+                  class="form-control"
+                  row="5"
+                  id="editInstructions"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label"
+                  >Dosage</label
+                >
+                <input type="text" class="form-control" id="editDosage" />
               </div>
             </form>
           </div>
@@ -244,8 +323,8 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
-              Add
+            <button id="edit" type="button" class="btn btn-primary" data-dismiss="modal">
+              Edit
             </button>
           </div>
         </div>
@@ -285,7 +364,7 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
+            <button id="delete" type="button" class="btn btn-primary" data-dismiss="modal">
               Delete
             </button>
           </div>
@@ -294,19 +373,9 @@
     </div>
 
     <!--===============================================================================================-->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <!--===============================================================================================-->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!--===============================================================================================-->
-    <script src="js/prescriptions/select2.min.js"></script>
-    <script src="js/prescriptions/select2.js"></script>
-    <script src="js/prescriptions/tooltip.js"></script>
     <!--===============================================================================================-->
     <script src="js/prescriptions/perfect-scrollbar.min.js"></script>
     <!--===============================================================================================-->

@@ -23,6 +23,7 @@ Run the following SQL statements before using the application.
 ```sql
 CREATE TABLE Users (email varchar(40) NOT NULL, password varchar(60), firstName varchar(20), lastName varchar(20), phone int(15), isDoc bool, PRIMARY KEY(email));
 CREATE TABLE Calendar (id varchar(36) NOT NULL, email varchar(40), start int(15), duration int(2), title varchar(40), content varchar(40), category varchar(20), PRIMARY KEY(id), FOREIGN KEY(email) REFERENCES Users(email));
+CREATE TABLE Prescription (prescription varchar(40), instruction varchar(255), dosage varchar(20), patient varchar(40), patientFname varchar(40), patientLname varchar(40), doctor varchar(40), doctorLname varchar(40), FOREIGN KEY (patient) REFERENCES Users(email), FOREIGN KEY (patientFname) REFERENCES Users(firstName), FOREIGN KEY (patientLname) REFERENCES Users(lastName), FOREIGN KEY (doctor) REFERENCES Users(email), FOREIGN KEY (doctorLname) REFERENCES Users(lastName), PRIMARY KEY (prescription, patient, doctor));
 ```
 
 ## Authors

@@ -6,7 +6,7 @@
     http_response_code(400); // Bad request http status
     $db->close();
     exit();
-}
+  }
 
   $id = mysqli_real_escape_string($db, $_POST['id']);
   $email = $_SESSION['email'];

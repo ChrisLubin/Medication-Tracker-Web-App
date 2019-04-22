@@ -41,7 +41,7 @@
           <li><a class="nav-link active" href="#">
               <h4>Calendar</h4>
             </a></li>
-          <li><a class="nav-link" href="#">
+          <li><a class="nav-link" href="prescriptions.php">
               <h4>Prescriptions</h4>
             </a></li>
             <?php

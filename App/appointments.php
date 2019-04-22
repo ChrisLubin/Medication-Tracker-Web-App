@@ -30,9 +30,13 @@
                     <nav class="nav nav-masthead justify-content-center">
                         <a class="nav-link" href="index.php">Home</a>
                         <a class="nav-link" href="calendar.php">Calendar</a>
-                        <a class="nav-link" href="#">Prescriptions</a>
+                        <a class="nav-link" href="prescriptions.php">Prescriptions</a>
                         <a class="nav-link active" href="#">Appointments</a>
-                        <a class='nav-link' href='patient.php'>Profile</a>
+                        <?php
+                            if (!$_SESSION['isDoc']) {
+                                echo "<a class='nav-link' href='patient.php'>Profile</a>";
+                            }
+                        ?>
                         <a class='nav-link' id='logout' href='#'>Logout</a>
                     </nav>
                 </div>
@@ -42,10 +46,10 @@
                 <div class="card-header">
                   <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
-                      <a class="nav-link active" id="createAppointment" href="#">Create Appointment</a>
+                      <a class="nav-link active" id="viewAppointments" href="#">View Appointments</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link inactive" id="viewAppointments" href="#">View Appointments</a>
+                      <a class="nav-link inactive" id="createAppointment" href="#">Create Appointment</a>
                     </li>
                   </ul>
                 </div>
@@ -102,7 +106,6 @@
                 </div>
             </footer>
         </div>
-
 
         <!-- Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
