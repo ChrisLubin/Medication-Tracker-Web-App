@@ -1,71 +1,106 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Medication Tracker App</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <!-- Custom styles for this template -->
-    <link href="css/cover.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
-</head>
+    <link href="css/cover.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
+  </head>
 
-<body class="text-center" style="background-image: url(images/doctor1.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-
+  <body
+    class="text-center"
+    style="background-image: url(images/doctor1.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+  >
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="masthead mb-auto">
-            <div class="inner">
-                <!-- Add logo here -->
-                <h3 class="masthead-brand">Team Overload</h3>
-                <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link" href="index.php">Home</a>
-                    <a class="nav-link" href="calendar.php">Calendar</a>
-                    <a class="nav-link" href="#">Prescriptions</a>
-                    <a class="nav-link" href="appointments.php">Appointments</a>
-                    <a class="nav-link active" href="#">Login</a>
-                    <a class="nav-link" href="register.html">Register</a>
-                </nav>
-            </div>
-        </header>
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <!-- Add logo here -->
+          <h3 class="masthead-brand">Team Overload</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="index.php">Home</a>
+            <a class="nav-link" href="calendar.php">Calendar</a>
+            <a class="nav-link" href="prescriptions.php">Prescriptions</a>
+            <a class="nav-link" href="appointments.php">Appointments</a>
+            <a class="nav-link active" href="#">Login</a>
+            <a class="nav-link" href="register.html">Register</a>
+          </nav>
+        </div>
+      </header>
 
-        <form class="form-signin">
-            <div class="card text-center text-dark text-primary w-responsive">
-                <div class="card-header">
-                    <h1 class="h3 font-weight-normal">Please sign in</h1>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <input type="email" id="email" class="form-control rounded" placeholder="Email address" required autofocus>
-                        <input type="password" id="password" class="form-control rounded" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="remember-me"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button id="submit" class="btn btn-lg btn-primary" type="button">Sign in</button>
-                    </div>
-                </div>
+      <form class="form-signin">
+        <div class="card text-center text-dark text-primary w-responsive">
+          <div class="card-header">
+            <h1 class="h3 font-weight-normal">Please sign in</h1>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                class="form-control rounded"
+                placeholder="Email address"
+                required
+                autofocus
+              />
+              <input
+                type="password"
+                id="password"
+                class="form-control rounded"
+                placeholder="Password"
+                required
+              />
             </div>
-        </form>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me" /> Remember me
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <button id="submit" class="btn btn-lg btn-primary" type="button">
+                Sign in
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
 
-        <footer class="mastfoot mt-auto">
-            <div class="inner">
-                <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-            </div>
-        </footer>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>
+            Cover template for
+            <a href="https://getbootstrap.com/">Bootstrap</a>, by
+            <a href="https://twitter.com/mdo">@mdo</a>.
+          </p>
+        </div>
+      </footer>
     </div>
 
-
     <!-- Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/login.js"></script>
-</body>
-
+  </body>
 </html>

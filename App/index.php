@@ -18,7 +18,7 @@
                 <nav class="nav nav-masthead justify-content-center">
                     <a class="nav-link active" href="#">Home</a>
                     <a class="nav-link" href="calendar.php">Calendar</a>
-                    <a class='nav-link' href='#'>Prescriptions</a>
+                    <a class='nav-link' href='prescriptions.php'>Prescriptions</a>
                     <?php
                         if (!isset($_SESSION)) {session_start();}
 

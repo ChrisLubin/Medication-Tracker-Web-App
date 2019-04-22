@@ -16,9 +16,8 @@ a:hover {
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #fff;
-  border: .05rem solid #fff;
+  border: 0.05rem solid #fff;
 }
-
 
 /*
  * Base structure
@@ -34,14 +33,13 @@ body {
   display: -ms-flexbox;
   display: flex;
   color: black;
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
 }
 
 .cover-container {
   max-width: 50em;
 }
-
 
 /*
  * Header
@@ -55,11 +53,11 @@ body {
 }
 
 .nav-masthead .nav-link {
-  padding: .25rem 0;
+  padding: 0.25rem 0;
   font-weight: 700;
   color: rgba(96, 101, 109);
   background-color: transparent;
-  border-bottom: .25rem solid transparent;
+  border-bottom: 0.25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
@@ -85,24 +83,21 @@ body {
   }
 }
 
-
 /*
  * Cover
  */
 @media (min-width: 40em) {
-    .cover {
-        margin-right: 10rem;
-    }
+  .cover {
+    margin-right: 10rem;
+  }
 }
 .cover {
   padding: 0 1.5rem;
-    
 }
 .cover .btn-lg {
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   font-weight: 700;
 }
-
 
 /*
  * Footer
