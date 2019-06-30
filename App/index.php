@@ -43,9 +43,6 @@
         <main role="main" class="inner cover">
             <h1 class="cover-heading">Med Tracker</h1>
             <p class="lead">Easily keep track of any medication. Get notifications of scheduled prescriptions. Have real doctors help you with prescriptions too!</p>
-            <p class="lead">
-                <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-            </p>
         </main>
 
         <footer class="mastfoot mt-auto">

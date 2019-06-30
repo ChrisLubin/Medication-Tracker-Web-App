@@ -26,6 +26,53 @@ CREATE TABLE Calendar (id varchar(36) NOT NULL, email varchar(40), start int(15)
 CREATE TABLE Prescription (prescription varchar(40), instruction varchar(255), dosage varchar(20), patient varchar(40), patientFname varchar(40), patientLname varchar(40), doctor varchar(40), doctorLname varchar(40), FOREIGN KEY (patient) REFERENCES Users(email), FOREIGN KEY (patientFname) REFERENCES Users(firstName), FOREIGN KEY (patientLname) REFERENCES Users(lastName), FOREIGN KEY (doctor) REFERENCES Users(email), FOREIGN KEY (doctorLname) REFERENCES Users(lastName), PRIMARY KEY (prescription, patient, doctor));
 ```
 
+## Screenshots
+
+<table>
+    <tr>
+        <td>
+            <img alt="Screenshot 1" src="App/images/Demo/screenshot1.png">
+        </td>
+        <td>
+            <img alt="Screenshot 2" src="App/images/Demo/screenshot2.png">
+        </td>
+        <td>
+            <img alt="Screenshot 3" src="App/images/Demo/screenshot3.png">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img alt="Screenshot 4" src="App/images/Demo/screenshot4.png">
+        </td>
+        <td>
+            <img alt="Screenshot 5" src="App/images/Demo/screenshot5.png">
+        </td>
+        <td>
+            <img alt="Screenshot 6" src="App/images/Demo/screenshot6.png">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img alt="Screenshot 7" src="App/images/Demo/screenshot7.png">
+        </td>
+        <td>
+            <img alt="Screenshot 8" src="App/images/Demo/screenshot8.png">
+        </td>
+        <td>
+            <img alt="Screenshot 9" src="App/images/Demo/screenshot9.png">
+        </td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img alt="Screenshot 10" src="App/images/Demo/screenshot10.png">
+        </td>
+        <td>
+            <img alt="Screenshot 11" src="App/images/Demo/screenshot11.png">
+        </td>
+    </tr>
+</table>
+
 ## Authors
 
 - **Alexander Alonso** - _Front End_ - [AlexXXV](https://github.com/AlexXXV)
